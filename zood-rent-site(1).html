@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زود لتأجير السيارات | ZOOD Rent a Car</title>
+    <style>
+        :root {
+            --bg-main: #050509;
+            --bg-secondary: #0b0b12;
+            --accent: #d4af37;
+            --accent-soft: rgba(212, 175, 55, 0.15);
+            --text-main: #f5f5f5;
+            --text-muted: #b2b2b8;
+            --card-bg: #11111a;
+            --border-soft: rgba(255, 255, 255, 0.06);
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #151521 0, #050509 55%, #010104 100%);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(
+                to bottom,
+                rgba(5, 5, 9, 0.96),
+                rgba(5, 5, 9, 0.85),
+                rgba(5, 5, 9, 0.0)
+            );
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 30% 20%, #f7e7a7, #d4af37 42%, #9c7a20 100%);
+            box-shadow:
+                0 0 18px rgba(212, 175, 55, 0.65),
+                0 0 60px rgba(212, 175, 55, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 19px;
+            letter-spacing: 1px;
+            color: #050509;
+        }
+
+        .logo-text-main {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo-text-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f7e7a7, #d4af37, #f7e7a7);
+            transition: width 0.2s ease-out;
+            border-radius: 999px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            border-radius: 999px;
+            padding: 9px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid transparent;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease-out;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f7e7a7, #d4af37, #b9921e);
+            color: #050509;
+            box-shadow:
+                0 0 14px rgba(212, 175, 55, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            border-color: var(--border-soft);
+            background: rgba(7, 7, 12, 0.6);
+            color: var(--text-muted);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--text-main);
+            background: rgba(15, 15, 22, 0.9);
+        }
+
+        .hero {
+            padding: 32px 0 56px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(10, 10, 18, 0.85);
+            border: 1px solid var(--border-soft);
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
+        }
+
+        .eyebrow-badge {
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #f7e7a7, #d4af37, #f7e7a7);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 20px;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .hero-card {
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left, #2b2330 0, #11111a 40%, #050509 100%);
+            padding: 18px 18px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient-orb {
+            position: absolute;
+            inset-inline-start: -40%;
+            bottom: -40%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.55), transparent 65%);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .hero-car-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .hero-car-main {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .hero-car-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .hero-car-tag {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(9, 9, 16, 0.8);
+        }
+
+        .hero-car-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        .hero-car-price {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .hero-car-price strong {
+            font-size: 19px;
+        }
+
+        .hero-car-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hero-car-meta span {
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(7, 7, 14, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-car-footer {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hero-car-progress {
+            flex: 1;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .hero-car-progress span {
+            display: block;
+            height: 100%;
+            width: 78%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #f7e7a7, #d4af37);
+        }
+
+        .pill-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            background: rgba(6, 6, 12, 0.8);
+        }
+
+        section {
+            padding: 18px 0 36px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .section-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            border-radius: var(--radius-md);
+            background: radial-gradient(circle at top, #1b1b27 0, #0b0b12 40%, #050509 100%);
+            border: 1px solid var(--border-soft);
+            padding: 12px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.52);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-muted);
+        }
+
+        .badge-gold {
+            border-color: rgba(212, 175, 55, 0.65);
+            color: var(--accent);
+            background: rgba(212, 175, 55, 0.09);
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .card-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .card-body {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .card-footer {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+        }
+
+        .price-tag {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .step-number {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(212, 175, 55, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .step-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .contact-card {
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #11111a, #080810, #050509);
+            border: 1px solid var(--border-soft);
+            padding: 16px 14px 14px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .contact-strong {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .field-group {
+            display: grid;
+            gap: 4px;
+            font-size: 11px;
+        }
+
+        .field-group label {
+            color: var(--text-muted);
+        }
+
+        .field-group input,
+        .field-group textarea {
+            background: #050509;
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            padding: 8px 10px;
+            font-size: 12px;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .field-group input:focus,
+        .field-group textarea:focus {
+            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.18);
+        }
+
+        .field-group textarea {
+            resize: vertical;
+            min-height: 72px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-soft);
+            padding: 14px 0 18px;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .hero-card {
+                order: -1;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .fleet-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .fleet-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .steps-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .hero {
+                padding-top: 22px;
+            }
+            .nav {
+                padding: 10px 0;
+            }
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-area">
+                    <div class="logo-mark">ZD</div>
+                    <div>
+                        <div class="logo-text-main">زود لتأجير السيارات</div>
+                        <div class="logo-text-sub">ZOOD Rent a Car • جدة – المملكة العربية السعودية</div>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#fleet">أسطول السيارات</a>
+                    <a href="#how">طريقة الحجز</a>
+                    <a href="#corporate">عقود الشركات</a>
+                    <a href="#contact">تواصل معنا</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="tel:0566740112" class="btn btn-ghost">اتصل بنا</a>
+                    <a href="https://wa.me/966566740112" class="btn btn-primary">احجز عبر الواتساب</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        أسطول حديث • دعم 24/7
+                        <span class="eyebrow-badge">خدمة فورية لرجال الأعمال</span>
+                    </div>
+                    <h1 class="hero-title">
+                        زود لتأجير السيارات<br>
+                        <span>اختيارك الذكي للتنقل الفاخر والإدارة الاحترافية لأساطيلك.</span>
+                    </h1>
+                    <p class="hero-sub">
+                        نوفر حلول تأجير مرنة للأفراد والشركات، عقود شهرية وسنوية، إدارة أساطيل كاملة،
+                        ودعم تشغيلي مصمم ليناسب طبيعة عملك – مع تركيز خاص على الجودة، الانضباط، والشفافية المالية.
+                    </p>
+                    <div class="hero-cta-row">
+                        <a href="https://wa.me/966566740112" class="btn btn-primary">
+                            احجز سيارتك الآن عبر الواتساب
+                            <span>↳ رد سريع خلال دقائق</span>
+                        </a>
+                        <a href="tel:0566740112" class="btn btn-ghost">
+                            اتصال مباشر على 0566740112
+                        </a>
+                    </div>
+                    <div class="hero-meta">
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-dot"></span>
+                            عقود شهرية – سنوية – طويلة الأجل
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-dot"></span>
+                            تقارير دورية عن الأسطول والالتزامات المالية
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-dot"></span>
+                            إمكانية الربط مع أنظمة تتبع المركبات ونظم المحاسبة
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-gradient-orb"></div>
+                    <div class="hero-car-label">عرض خاص لعملاء الشركات</div>
+                    <div class="hero-car-main">
+                        <div>
+                            <div class="hero-car-title">Zood Business Class</div>
+                            <div class="pill-row">
+                                <span class="hero-car-tag">30 سيارة سيدان اقتصادية</span>
+                                <span class="hero-car-badge">عقد سنوي شامل الصيانة</span>
+                            </div>
+                            <div class="hero-car-price">
+                                يبدأ من <strong>1,499</strong> ريال / شهر لكل مركبة
+                            </div>
+                        </div>
+                        <div>
+                            <div class="badge badge-gold">مناسب لأساطيل الشركات</div>
+                        </div>
+                    </div>
+                    <div class="hero-car-meta">
+                        <span>تأمين ضد الغير أو شامل حسب الاتفاق</span>
+                        <span>دعم على الطريق داخل المدن الرئيسية</span>
+                        <span>تقارير شهرية بالالتزامات والمدفوعات</span>
+                    </div>
+                    <div class="hero-car-footer">
+                        <div>
+                            نسبة إشغال الأسطول الحالي: <strong>78%</strong>
+                        </div>
+                        <div class="hero-car-progress">
+                            <span></span>
+                        </div>
+                        <div>متاح حجز عقود جديدة ✅</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fleet">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">أسطول زود لتأجير السيارات</div>
+                        <div class="section-sub">
+                            تشكيلة مدروسة من السيارات الاقتصادية والمتوسطة والفاخرة لتناسب استخدام الأفراد والشركات.
+                        </div>
+                    </div>
+                    <div class="chip">
+                        إدارة أسطول احترافية • إعداد خاص للشركات
+                    </div>
+                </div>
+
+                <div class="fleet-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">فئة اقتصادية – سيدان</div>
+                                <div class="card-sub">مثال: يارس – صني – إلنترا أو ما يعادلها</div>
+                            </div>
+                            <span class="badge badge-gold">الأكثر طلبًا</span>
+                        </div>
+                        <div class="card-body">
+                            مناسبة لشركات التوصيل، المندوبين، والفروع داخل المدن.
+                            استهلاك وقود منخفض، وصيانة سريعة وتكاليف تشغيلية محسوبة.
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-tag">ابتداءً من 99 ريال / يوم</span>
+                            <span>عقود شهرية/سنوية للأفراد والشركات</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">فئة متوسطة – سيدان/كروس أوفر</div>
+                                <div class="card-sub">مثال: كامري – سوناتا – كورولا كروس</div>
+                            </div>
+                            <span class="badge">مناسبة لفرق الإدارة</span>
+                        </div>
+                        <div class="card-body">
+                            راحة أكبر في المشاوير اليومية والاجتماعات الرسمية،
+                            مع صورة مهنية تناسب المدراء وممثلي الشركات.
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-tag">ابتداءً من 169 ريال / يوم</span>
+                            <span>مزايا خاصة لعقود +10 سيارات</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">فئة فاخرة – رجال أعمال</div>
+                                <div class="card-sub">سيارات فاخرة وسائقين عند الطلب</div>
+                            </div>
+                            <span class="badge">خدمة خاصة</span>
+                        </div>
+                        <div class="card-body">
+                            مخصصة للاستقبالات الرسمية، ضيوف الشركات، ورجال الأعمال.
+                            إمكانية توفير سائقين محترفين وفق الطلب.
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-tag">باقات خاصة حسب الاستخدام</span>
+                            <span>تواصل معنا لتفاصيل أكثر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">طريقة الحجز مع زود</div>
+                        <div class="section-sub">
+                            خطوات بسيطة وسريعة، من أول اتصال حتى استلام المركبة وتوقيع العقد.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="step-number">1</div>
+                            <div class="step-title">طلب الحجز</div>
+                        </div>
+                        <div class="card-body">
+                            تواصل معنا عبر الواتساب أو الهاتف، وحدد نوع المركبة، مدة التأجير،
+                            وطبيعة الاستخدام (فردي / شركة / أسطول).
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="step-number">2</div>
+                            <div class="step-title">تأكيد العرض والمستندات</div>
+                        </div>
+                        <div class="card-body">
+                            يتم إرسال عرض رسمي بالعربية يوضح:
+                            نوع المركبة، مدة العقد، الدفعات، التأمين، والشروط الأساسية – للموافقة النهائية.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="step-number">3</div>
+                            <div class="step-title">استلام السيارة وتوقيع العقد</div>
+                        </div>
+                        <div class="card-body">
+                            يتم تجهيز المركبة وفحصها، وتسليمها في الموقع المتفق عليه، مع توقيع عقد واضح وموحد
+                            يضمن حقوق الطرفين ويبيّن جميع الالتزامات.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="corporate">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">حلول خاصة للشركات وإدارة الأساطيل</div>
+                        <div class="section-sub">
+                            إذا كان نشاطك يعتمد على السيارات، زود تقدّم لك شراكة طويلة الأمد وليس مجرد تأجير عابر.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="card-body">
+                        <p style="font-size:13px; margin-bottom:8px;">
+                            ✔ عقود مخصصة للشركات، مع إمكانية:
+                        </p>
+                        <ul style="font-size:12px; color:var(--text-muted); padding-right:18px; display:grid; gap:4px; margin-bottom:10px;">
+                            <li>ربط بيانات المركبات مع أنظمة المحاسبة في منشأتك.</li>
+                            <li>إصدار تقارير شهرية تفصيلية بالدفعات، الغرامات (إن وجدت)، والانتهاء الفعلي للعقود.</li>
+                            <li>دعم نمو الأسطول أو تقليصه بناءً على المواسم وطبيعة التشغيل.</li>
+                            <li>توفير نقطة تواصل واحدة (Account Manager) لجميع عقودك.</li>
+                        </ul>
+                        <div class="chip">
+                            مناسب لشركات التوصيل، العيادات الطبية، المكاتب الهندسية، والمقاولات.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">تواصل مع زود لتأجير السيارات</div>
+                        <div class="section-sub">
+                            احجز سيارتك أو اطلب عرضًا خاصًا لأسطول شركتك عبر القنوات التالية.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-label">معلومات التواصل</div>
+                        <div class="contact-row">
+                            <div>
+                                <div class="contact-label">الجوال (واتساب):</div>
+                                <div class="contact-strong">0566740112</div>
+                            </div>
+                            <div>
+                                <div class="contact-label">البريد الإلكتروني:</div>
+                                <div class="contact-strong">info@zood-rent.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div>
+                                <div class="contact-label">الموقع:</div>
+                                <div class="contact-strong">جدة – المملكة العربية السعودية</div>
+                            </div>
+                            <div>
+                                <div class="contact-label">ساعات العمل:</div>
+                                <div class="contact-strong">يومياً من 9 صباحًا حتى 11 مساءً</div>
+                            </div>
+                        </div>
+                        <div style="margin-top:12px; font-size:12px; color:var(--text-muted);">
+                            يمكن تخصيص صفحة خاصة لعملاء الشركات تحتوي على نموذج طلب عقود شهرية/سنوية،
+                            مع ربطها بنظام داخلي لإدارة العقود والفواتير.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="contact-label">نموذج تواصل سريع (تصميم فقط – تحتاج ربط برمجي)</div>
+                            <form class="contact-form">
+                                <div class="field-group">
+                                    <label for="name">الاسم الكامل</label>
+                                    <input id="name" type="text" placeholder="اكتب اسمك أو اسم المنشأة">
+                                </div>
+                                <div class="field-group">
+                                    <label for="phone">رقم الجوال</label>
+                                    <input id="phone" type="tel" placeholder="05XXXXXXXX">
+                                </div>
+                                <div class="field-group">
+                                    <label for="type">نوع الطلب</label>
+                                    <input id="type" type="text" placeholder="تأجير فردي / عقود شركات / إدارة أسطول">
+                                </div>
+                                <div class="field-group">
+                                    <label for="message">تفاصيل إضافية</label>
+                                    <textarea id="message" placeholder="اكتب احتياجك وعدد السيارات والمدة المطلوبة"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-primary">
+                                    إرسال الطلب (تجريبي – يحتاج برمجة)
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-row">
+            <div>
+                © <span id="year"></span> زود لتأجير السيارات – ZOOD Rent a Car. جميع الحقوق محفوظة.
+            </div>
+            <div class="footer-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">شروط وأحكام التأجير</a>
+                <a href="#">اتفاقية عقود الشركات</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
