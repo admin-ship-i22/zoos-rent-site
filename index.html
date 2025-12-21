@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="زود لتأجير السيارات في جدة — حلول تأجير للأفراد والشركات، عقود شهرية وسنوية، وإدارة أساطيل مع دعم 24/7.">
     <title>زود لتأجير السيارات | ZOOD Rent a Car</title>
     <style>
         :root {
@@ -687,7 +688,7 @@
                 </div>
                 <div class="nav-cta">
                     <a href="tel:0566740112" class="btn btn-ghost">اتصل بنا</a>
-                    <a href="https://wa.me/966566740112" class="btn btn-primary">احجز عبر الواتساب</a>
+                    <a href="https://wa.me/966566740112" class="btn btn-primary" rel="noopener">احجز عبر الواتساب</a>
                 </div>
             </nav>
         </div>
@@ -711,7 +712,7 @@
                         ودعم تشغيلي مصمم ليناسب طبيعة عملك – مع تركيز خاص على الجودة، الانضباط، والشفافية المالية.
                     </p>
                     <div class="hero-cta-row">
-                        <a href="https://wa.me/966566740112" class="btn btn-primary">
+                        <a href="https://wa.me/966566740112" class="btn btn-primary" rel="noopener">
                             احجز سيارتك الآن عبر الواتساب
                             <span>↳ رد سريع خلال دقائق</span>
                         </a>
@@ -967,11 +968,11 @@
                             <form class="contact-form">
                                 <div class="field-group">
                                     <label for="name">الاسم الكامل</label>
-                                    <input id="name" type="text" placeholder="اكتب اسمك أو اسم المنشأة">
+                                    <input id="name" type="text" placeholder="اكتب اسمك أو اسم المنشأة" autocomplete="name">
                                 </div>
                                 <div class="field-group">
                                     <label for="phone">رقم الجوال</label>
-                                    <input id="phone" type="tel" placeholder="05XXXXXXXX">
+                                    <input id="phone" type="tel" placeholder="05XXXXXXXX" autocomplete="tel">
                                 </div>
                                 <div class="field-group">
                                     <label for="type">نوع الطلب</label>
@@ -1008,7 +1009,7 @@
 </div>
 
 <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = String(new Date().getFullYear());
 </script>
 </body>
 </html>
