@@ -1,0 +1,26 @@
+# ZOOD Rent a Car - Redirect Rules
+# قواعد التحويل لموقع زود لتأجير السيارات
+
+# Redirect old HTML file to root
+/zood-rent-site(1).html    /    301
+/zood-rent-site.html       /    301
+
+# Section redirects (for SEO and clean URLs)
+/fleet           /#fleet           302
+/cars            /#fleet           302
+/how-to-book     /#how             302
+/booking         /#how             302
+/corporate       /#corporate       302
+/companies       /#corporate       302
+/contact         /#contact         302
+/privacy         /#privacy         302
+/terms           /#terms           302
+/agreement       /#corporate-agreement   302
+
+# Arabic URL redirects
+/الاسطول         /#fleet           302
+/الحجز           /#how             302
+/الشركات         /#corporate       302
+/تواصل           /#contact         302
+/الخصوصية        /#privacy         302
+/الشروط          /#terms           302

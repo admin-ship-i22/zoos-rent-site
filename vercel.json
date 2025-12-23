@@ -1,0 +1,101 @@
+{
+  "version": 2,
+  "name": "zood-rent-car",
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/zood-rent-site(1).html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/zood-rent-site.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fleet",
+      "destination": "/#fleet",
+      "permanent": false
+    },
+    {
+      "source": "/cars",
+      "destination": "/#fleet",
+      "permanent": false
+    },
+    {
+      "source": "/how-to-book",
+      "destination": "/#how",
+      "permanent": false
+    },
+    {
+      "source": "/booking",
+      "destination": "/#how",
+      "permanent": false
+    },
+    {
+      "source": "/corporate",
+      "destination": "/#corporate",
+      "permanent": false
+    },
+    {
+      "source": "/companies",
+      "destination": "/#corporate",
+      "permanent": false
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": false
+    },
+    {
+      "source": "/privacy",
+      "destination": "/#privacy",
+      "permanent": false
+    },
+    {
+      "source": "/terms",
+      "destination": "/#terms",
+      "permanent": false
+    },
+    {
+      "source": "/agreement",
+      "destination": "/#corporate-agreement",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

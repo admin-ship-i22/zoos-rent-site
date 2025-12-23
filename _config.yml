@@ -1,0 +1,50 @@
+# ZOOD Rent a Car - Jekyll Configuration
+# زود لتأجير السيارات - إعدادات Jekyll
+
+# Site Settings
+title: "زود لتأجير السيارات | ZOOD Rent a Car"
+description: "خدمات تأجير سيارات احترافية للأفراد والشركات في جدة، المملكة العربية السعودية"
+url: ""
+baseurl: ""
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from build
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Include files in build
+include:
+  - _redirects
+  - .htaccess
+
+# Plugins
+plugins: []
+
+# Permalinks - Clean URLs
+permalink: pretty
+
+# Default encoding
+encoding: utf-8
+
+# Timezone
+timezone: Asia/Riyadh
+
+# Language
+lang: ar
+
+# Cache and optimization
+sass:
+  style: compressed
+
+# GitHub Pages specific
+github:
+  is_project_page: true
+  repository_name: zood-rent

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة غير موجودة | زود لتأجير السيارات</title>
+    <style>
+        :root {
+            --bg-main: #050509;
+            --accent: #d4af37;
+            --text-main: #f5f5f5;
+            --text-muted: #b2b2b8;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #151521 0, #050509 55%, #010104 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+        }
+        
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f7e7a7, #d4af37, #f7e7a7);
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f7e7a7, #d4af37, #b9921e);
+            color: #050509;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+        
+        .links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        
+        .links a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>الصفحة غير موجودة</h1>
+        <p>عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها إلى عنوان آخر.</p>
+        <a href="/" class="btn">
+            العودة للصفحة الرئيسية
+        </a>
+        <div class="links">
+            <a href="/#fleet">أسطول السيارات</a>
+            <a href="/#contact">تواصل معنا</a>
+            <a href="https://wa.me/966566740112">واتساب</a>
+        </div>
+    </div>
+</body>
+</html>
