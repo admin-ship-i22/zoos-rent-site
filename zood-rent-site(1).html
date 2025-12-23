@@ -25,6 +25,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: radial-gradient(circle at top, #151521 0, #050509 55%, #010104 100%);
@@ -687,7 +691,7 @@
                 </div>
                 <div class="nav-cta">
                     <a href="tel:0566740112" class="btn btn-ghost">اتصل بنا</a>
-                    <a href="https://wa.me/966566740112" class="btn btn-primary">احجز عبر الواتساب</a>
+                    <a href="https://wa.me/966566740112" class="btn btn-primary" target="_blank" rel="noopener noreferrer">احجز عبر الواتساب</a>
                 </div>
             </nav>
         </div>
@@ -711,7 +715,7 @@
                         ودعم تشغيلي مصمم ليناسب طبيعة عملك – مع تركيز خاص على الجودة، الانضباط، والشفافية المالية.
                     </p>
                     <div class="hero-cta-row">
-                        <a href="https://wa.me/966566740112" class="btn btn-primary">
+                        <a href="https://wa.me/966566740112" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                             احجز سيارتك الآن عبر الواتساب
                             <span>↳ رد سريع خلال دقائق</span>
                         </a>
@@ -991,6 +995,57 @@
 
             </div>
         </section>
+
+        <section id="privacy">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">سياسة الخصوصية</div>
+                        <div class="section-sub">ملخص عام — يمكن تخصيصه وفق متطلبات منشأتك.</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="font-size:12px;">
+                        نلتزم بحماية بياناتك. يتم استخدام بيانات التواصل (مثل رقم الجوال) فقط لغرض الرد على طلبك وتأكيد الحجز أو عرض الشركات.
+                        لا نشارك بياناتك مع أطراف خارجية إلا عند الحاجة التشغيلية وبموافقتك (مثل التأمين أو خدمات التوصيل).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="terms">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">شروط وأحكام التأجير</div>
+                        <div class="section-sub">نقاط مختصرة — التفاصيل النهائية تكون بالعقد.</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="font-size:12px;">
+                        تختلف الشروط حسب نوع العقد (يومي/شهري/سنوي) ونوع التأمين. يشمل ذلك متطلبات الهوية، الرخصة، مسؤولية المخالفات،
+                        وسياسة الوقود والإرجاع والتمديد. يتم اعتماد التفاصيل النهائية في عقد التأجير عند الاستلام.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="corporate-agreement">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">اتفاقية عقود الشركات</div>
+                        <div class="section-sub">إطار عام للتعاون — يُفصّل حسب حجم الأسطول ومدة العقد.</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="font-size:12px;">
+                        تشمل الاتفاقية عادة: آلية الفوترة (شهري/ربع سنوي)، حدود الاستخدام، الصيانة الدورية، السيارة البديلة (إن وجدت)،
+                        آلية التقارير، ونقطة تواصل واحدة لإدارة العقود. للحصول على نسخة رسمية، تواصل معنا عبر الواتساب.
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -999,9 +1054,9 @@
                 © <span id="year"></span> زود لتأجير السيارات – ZOOD Rent a Car. جميع الحقوق محفوظة.
             </div>
             <div class="footer-links">
-                <a href="#">سياسة الخصوصية</a>
-                <a href="#">شروط وأحكام التأجير</a>
-                <a href="#">اتفاقية عقود الشركات</a>
+                <a href="#privacy">سياسة الخصوصية</a>
+                <a href="#terms">شروط وأحكام التأجير</a>
+                <a href="#corporate-agreement">اتفاقية عقود الشركات</a>
             </div>
         </div>
     </footer>
